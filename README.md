@@ -68,14 +68,24 @@ do not investigate further.
 - questionable physics
 - somehow actually playable
 
-## might add later
+## mobile support
 
-might add more maps, different difficulties, more characters, new obstacles, effects, animations, and other random shit eventually.
+this does NOT work properly on phones btw.
+
+tested it. found out the hard way.
+
+it technically has touch controls, but apparently that means absolutely nothing when you're trying to run the downloaded html files on android/ios.
+
+so yeah, laptop/desktop for now.
+
+might make a properly hosted version eventually so it actually works on phones.
 
 heavy emphasis on **might**.
 
-we'll see.
+## might add later
 
-## final note
+might add more maps, different difficulties, more characters, new obstacles, effects, animations, and whatever other random shit i think of.
 
-if it works, it works.
+again, heavy emphasis on **might**.
+
+no promises. we'll see.
