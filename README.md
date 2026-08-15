@@ -4,11 +4,12 @@ definitely an original game that i came up with entirely on my own.
 
 definitely did not look at another extremely similar game and go "yeah imma make that."
 
-you play as some square thing that is still called `bird.png` for some reason and try to fly through neon buildings without dying.
+you play as **VOID**, a square mf whose main purpose in life is apparently flying through neon buildings and trying not to explode.
 
 ## how to play
 
-- press space or click to flap
+- press space or click to flap on laptop/desktop
+- tap the screen to flap on mobile
 - fly through the gaps
 - don't hit the buildings
 - don't hit the ground
@@ -37,7 +38,7 @@ this is clearly the first game in human history where you click to make somethin
 
 the game mechanics being suspiciously familiar? coincidental.
 
-the way the character moves? coincidental.
+the way VOID moves? coincidental.
 
 the obstacles coming from the top and bottom? coincidental.
 
@@ -53,15 +54,19 @@ do not investigate further.
 
 ## current features
 
-- square thing that is apparently a bird
+- VOID
 - neon buildings (YES those are buildings)
 - questionably cropped obstacles
 - all designs made by yours truly
 - unnecessarily dramatic main menu
 - how to play screen for an extremely complicated game
+- character select screen
+- several suspiciously empty character slots
 - score and saved high score
 - spinning square physics
-- death animation
+- purple trail for VOID
+- actual death animation because apparently he didn't have one in v1.0
+- VOID violently exploding into purple pixels
 - skill issue screen
 - suspiciously familiar game mechanics
 - completely coincidental animations
@@ -70,17 +75,38 @@ do not investigate further.
 
 ## mobile support
 
-this does NOT work properly on phones btw.
+**v1.1 can finally be played on phones.**
 
-tested it. found out the hard way.
+yeah, it actually works now.
 
-it technically has touch controls, but apparently that means absolutely nothing when you're trying to run the downloaded html files on android/ios.
+the game is properly hosted, so you don't have to download a ZIP, extract it, find `index.html`, and pray your phone knows what the fuck you're trying to do.
 
-so yeah, laptop/desktop for now.
+just open the hosted version in your browser and play.
 
-might make a properly hosted version eventually so it actually works on phones.
+### controls
 
-heavy emphasis on **might**.
+**laptop / desktop**
+- space to flap
+- clicking also works
+
+**android / iphone / ipad**
+- tap the game screen to flap
+
+so yeah, mobile support is finally real this time.
+
+tested.
+
+## v1.1
+
+VOID finally has an actual name instead of just being some square thing called `bird.png`.
+
+also gave him some new animations because apparently he went through the entirety of v1.0 without having a proper way to die.
+
+there's also a character select screen now.
+
+what's going in those other slots?
+
+we'll see.
 
 ## might add later
 
