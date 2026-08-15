@@ -235,7 +235,7 @@ let deathParticles =
 ========================= */
 
 const gravity =
-    0.22;
+    0.30;
 
 
 const flapPower =
@@ -252,7 +252,7 @@ const maxFallSpeed =
 ========================= */
 
 const buildingSpeed =
-    2.5;
+    3;
 
 
 const buildingWidth =
