@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -21,25 +20,19 @@
         rel="stylesheet"
         href="style.css"
     >
-
 </head>
 
-
 <body>
-
 
 <div class="game-shell">
 
 
-    <!-- =========================
-         MAIN MENU
-    ========================== -->
+    <!-- MAIN MENU -->
 
     <div
         id="mainMenu"
         class="main-menu"
     >
-
 
         <img
             src="images/building.png"
@@ -47,13 +40,11 @@
             alt=""
         >
 
-
         <img
             src="images/building.png"
             class="menu-building right-building"
             alt=""
         >
-
 
         <img
             src="images/logo.png"
@@ -61,16 +52,13 @@
             alt="Void FlapGame Logo"
         >
 
-
         <img
             src="images/birdvoid.png"
             class="menu-bird"
             alt="Void Character"
         >
 
-
         <div class="menu-buttons">
-
 
             <button
                 id="playButton"
@@ -79,14 +67,12 @@
                 PLAY
             </button>
 
-
             <button
                 id="characterButton"
                 type="button"
             >
                 CHARACTERS
             </button>
-
 
             <button
                 id="howButton"
@@ -95,25 +81,25 @@
                 HOW TO PLAY
             </button>
 
+            <button
+                id="patchNotesButton"
+                type="button"
+            >
+                PATCH NOTES
+            </button>
 
         </div>
 
-
         <p class="menu-highscore">
-
             HIGH SCORE:
-
             <span id="menuHighScore">
                 0
             </span>
-
         </p>
-
 
         <p class="tiny-text">
             probably don't crash
         </p>
-
 
         <img
             src="images/ground.png"
@@ -121,39 +107,28 @@
             alt=""
         >
 
-
     </div>
 
 
-
-    <!-- =========================
-         CHARACTER SELECT
-    ========================== -->
+    <!-- CHARACTER SELECT -->
 
     <div
         id="characterMenu"
         class="character-menu hidden"
     >
 
-
         <div class="character-box">
-
 
             <h2>
                 SELECT CHARACTER
             </h2>
 
-
             <p class="character-subtitle">
-
                 current selection:
-
                 <span id="selectedCharacterText">
                     VOID
                 </span>
-
             </p>
-
 
             <div class="character-grid">
 
@@ -166,25 +141,20 @@
                     type="button"
                 >
 
-
                     <img
                         src="images/birdvoid.png"
                         alt="Void"
                     >
 
-
                     <span class="character-name">
                         VOID
                     </span>
-
 
                     <span class="character-status">
                         SELECTED
                     </span>
 
-
                 </button>
-
 
 
                 <!-- LOCKED 1 -->
@@ -194,29 +164,23 @@
                     type="button"
                 >
 
-
                     <span class="lock-icon">
                         ?
                     </span>
-
 
                     <span class="character-name">
                         ???
                     </span>
 
-
                     <span class="locked-label">
                         LOCKED
                     </span>
-
 
                     <span class="locked-message">
                         COMING SOON (MIGHT)
                     </span>
 
-
                 </button>
-
 
 
                 <!-- LOCKED 2 -->
@@ -226,29 +190,23 @@
                     type="button"
                 >
 
-
                     <span class="lock-icon">
                         ?
                     </span>
-
 
                     <span class="character-name">
                         ???
                     </span>
 
-
                     <span class="locked-label">
                         LOCKED
                     </span>
-
 
                     <span class="locked-message">
                         COMING SOON (MIGHT)
                     </span>
 
-
                 </button>
-
 
 
                 <!-- LOCKED 3 -->
@@ -258,29 +216,23 @@
                     type="button"
                 >
 
-
                     <span class="lock-icon">
                         ?
                     </span>
-
 
                     <span class="character-name">
                         ???
                     </span>
 
-
                     <span class="locked-label">
                         LOCKED
                     </span>
-
 
                     <span class="locked-message">
                         COMING SOON (MIGHT)
                     </span>
 
-
                 </button>
-
 
 
                 <!-- LOCKED 4 -->
@@ -290,32 +242,25 @@
                     type="button"
                 >
 
-
                     <span class="lock-icon">
                         ?
                     </span>
-
 
                     <span class="character-name">
                         ???
                     </span>
 
-
                     <span class="locked-label">
                         LOCKED
                     </span>
-
 
                     <span class="locked-message">
                         COMING SOON (MIGHT)
                     </span>
 
-
                 </button>
 
-
             </div>
-
 
             <button
                 id="characterBackButton"
@@ -324,31 +269,23 @@
                 BACK
             </button>
 
-
         </div>
-
 
     </div>
 
 
-
-    <!-- =========================
-         HOW TO PLAY
-    ========================== -->
+    <!-- HOW TO PLAY -->
 
     <div
         id="howMenu"
         class="how-menu hidden"
     >
 
-
         <div class="how-box">
-
 
             <h2>
                 HOW TO PLAY
             </h2>
-
 
             <img
                 src="images/birdvoid.png"
@@ -356,36 +293,29 @@
                 alt="Void Character"
             >
 
-
             <p>
                 desktop: press SPACE or click to flap.
             </p>
-
 
             <p>
                 mobile: tap the game screen to flap.
             </p>
 
-
             <p>
                 fly through the gaps.
             </p>
-
 
             <p>
                 don't hit the buildings.
             </p>
 
-
             <p>
                 don't hit the ground either.
             </p>
 
-
             <p>
                 if you die, skill issue.
             </p>
-
 
             <button
                 id="howBackButton"
@@ -394,42 +324,108 @@
                 BACK
             </button>
 
-
         </div>
-
 
     </div>
 
 
+    <!-- PATCH NOTES -->
 
-    <!-- =========================
-         GAME
-    ========================== -->
+    <div
+        id="patchNotesMenu"
+        class="patch-notes-menu hidden"
+    >
+
+        <div class="patch-notes-box">
+
+            <h2>
+                PATCH NOTES
+            </h2>
+
+            <h3>
+                v1.1
+            </h3>
+
+            <div class="patch-list">
+
+                <p>
+                    - the square mf finally has a name: VOID
+                </p>
+
+                <p>
+                    - added VOID's purple trail
+                </p>
+
+                <p>
+                    - added an actual death animation
+                </p>
+
+                <p>
+                    - VOID now explodes into purple pixels when he dies
+                </p>
+
+                <p>
+                    - added a character select screen
+                </p>
+
+                <p>
+                    - added 4 locked character slots
+                </p>
+
+                <p>
+                    - mobile support finally works
+                </p>
+
+                <p>
+                    - increased falling speed a bit
+                </p>
+
+                <p>
+                    - increased game speed a bit
+                </p>
+
+            </div>
+
+            <p class="patch-ending">
+                that's about it.
+                <br><br>
+                more stuff might come later.
+                <br>
+                heavy emphasis on might.
+            </p>
+
+            <button
+                id="patchNotesBackButton"
+                type="button"
+            >
+                BACK
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- GAME -->
 
     <div
         id="gameScreen"
         class="game-screen hidden"
     >
 
-
         <div class="game-topbar">
-
 
             <p id="scoreText">
                 SCORE: 0
             </p>
 
-
             <p id="highScoreText">
                 HIGH SCORE: 0
             </p>
 
-
         </div>
 
-
         <div class="canvas-wrapper">
-
 
             <canvas
                 id="gameCanvas"
@@ -438,36 +434,27 @@
             >
             </canvas>
 
-
         </div>
-
 
         <p class="controls desktop-controls">
             SPACE / CLICK
         </p>
 
-
         <p class="controls mobile-controls">
             TAP TO FLAP
         </p>
 
-
     </div>
 
 
-
-    <!-- =========================
-         GAME OVER
-    ========================== -->
+    <!-- GAME OVER -->
 
     <div
         id="gameOverMenu"
         class="game-over-menu hidden"
     >
 
-
         <div class="game-over-box">
-
 
             <img
                 src="images/game-over.png"
@@ -475,11 +462,9 @@
                 alt="Skill Issue"
             >
 
-
             <p id="finalScore">
                 SCORE: 0
             </p>
-
 
             <p
                 id="newHighScore"
@@ -487,9 +472,7 @@
             >
             </p>
 
-
             <div class="game-over-buttons">
-
 
                 <button
                     id="retryButton"
@@ -498,7 +481,6 @@
                     TRY AGAIN
                 </button>
 
-
                 <button
                     id="menuButton"
                     type="button"
@@ -506,21 +488,16 @@
                     MAIN MENU
                 </button>
 
-
             </div>
-0
 
         </div>
-
 
     </div>
 
 
 </div>
 
-
 <script src="script.js"></script>
-
 
 </body>
 
