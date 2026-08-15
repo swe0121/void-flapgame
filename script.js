@@ -1,180 +1,99 @@
-/* =========================
+/* ==============================
    ELEMENTS
-========================= */
+============================== */
 
 const mainMenu =
-    document.getElementById(
-        "mainMenu"
-    );
-
+    document.getElementById("mainMenu");
 
 const characterMenu =
-    document.getElementById(
-        "characterMenu"
-    );
-
+    document.getElementById("characterMenu");
 
 const howMenu =
-    document.getElementById(
-        "howMenu"
-    );
+    document.getElementById("howMenu");
 
-
-const patchNotesMenu =
-    document.getElementById(
-        "patchNotesMenu"
-    );
-
+const patchMenu =
+    document.getElementById("patchMenu");
 
 const gameScreen =
-    document.getElementById(
-        "gameScreen"
-    );
-
+    document.getElementById("gameScreen");
 
 const gameOverMenu =
-    document.getElementById(
-        "gameOverMenu"
-    );
+    document.getElementById("gameOverMenu");
 
 
 const playButton =
-    document.getElementById(
-        "playButton"
-    );
-
+    document.getElementById("playButton");
 
 const characterButton =
-    document.getElementById(
-        "characterButton"
-    );
-
+    document.getElementById("characterButton");
 
 const howButton =
-    document.getElementById(
-        "howButton"
-    );
+    document.getElementById("howButton");
 
-
-const patchNotesButton =
-    document.getElementById(
-        "patchNotesButton"
-    );
+const patchButton =
+    document.getElementById("patchButton");
 
 
 const characterBackButton =
-    document.getElementById(
-        "characterBackButton"
-    );
-
+    document.getElementById("characterBackButton");
 
 const howBackButton =
-    document.getElementById(
-        "howBackButton"
-    );
+    document.getElementById("howBackButton");
 
-
-const patchNotesBackButton =
-    document.getElementById(
-        "patchNotesBackButton"
-    );
+const patchBackButton =
+    document.getElementById("patchBackButton");
 
 
 const retryButton =
-    document.getElementById(
-        "retryButton"
-    );
-
+    document.getElementById("retryButton");
 
 const menuButton =
-    document.getElementById(
-        "menuButton"
-    );
+    document.getElementById("menuButton");
 
 
 const voidCharacter =
-    document.getElementById(
-        "voidCharacter"
-    );
-
+    document.getElementById("voidCharacter");
 
 const lockedCharacters =
-    document.querySelectorAll(
-        ".character-card.locked"
-    );
-
-
-const selectedCharacterText =
-    document.getElementById(
-        "selectedCharacterText"
-    );
+    document.querySelectorAll(".locked");
 
 
 const menuHighScore =
-    document.getElementById(
-        "menuHighScore"
-    );
+    document.getElementById("menuHighScore");
 
+const scoreText =
+    document.getElementById("scoreText");
+
+const highScoreText =
+    document.getElementById("highScoreText");
 
 const finalScore =
-    document.getElementById(
-        "finalScore"
-    );
-
+    document.getElementById("finalScore");
 
 const newHighScore =
-    document.getElementById(
-        "newHighScore"
-    );
+    document.getElementById("newHighScore");
 
 
 const canvas =
-    document.getElementById(
-        "gameCanvas"
-    );
-
+    document.getElementById("gameCanvas");
 
 const ctx =
-    canvas.getContext(
-        "2d"
-    );
+    canvas.getContext("2d");
 
 
-const scoreText =
-    document.getElementById(
-        "scoreText"
-    );
-
-
-const highScoreText =
-    document.getElementById(
-        "highScoreText"
-    );
-
-
-/* =========================
-   CHARACTER SYSTEM
-========================= */
-
-let selectedCharacter =
-    "void";
-
+/* ==============================
+   IMAGES
+============================== */
 
 const voidImage =
     new Image();
-
 
 voidImage.src =
     "images/birdvoid.png";
 
 
-/* =========================
-   OTHER IMAGES
-========================= */
-
 const backgroundImage =
     new Image();
-
 
 backgroundImage.src =
     "images/background.png";
@@ -183,7 +102,6 @@ backgroundImage.src =
 const buildingImage =
     new Image();
 
-
 buildingImage.src =
     "images/building.png";
 
@@ -191,119 +109,97 @@ buildingImage.src =
 const groundImage =
     new Image();
 
-
 groundImage.src =
     "images/ground.png";
 
 
-/* =========================
-   GAME VARIABLES
-========================= */
+/* ==============================
+   CHARACTER
+============================== */
 
-let bird;
+let selectedCharacter =
+    "void";
 
+
+/* ==============================
+   GAME STATE
+============================== */
+
+let bird =
+    null;
 
 let buildings =
     [];
 
-
-let buildingTimer =
-    0;
-
-
-let score =
-    0;
-
-
-let running =
-    false;
-
-
-let dying =
-    false;
-
-
-let animationFrameId =
-    null;
-
-
-let deathAnimationFrameId =
-    null;
-
-
-/* =========================
-   PARTICLES
-========================= */
-
 let trailParticles =
     [];
-
 
 let deathParticles =
     [];
 
+let buildingTimer =
+    0;
 
-/* =========================
-   PHYSICS
-========================= */
+let score =
+    0;
+
+let running =
+    false;
+
+let dying =
+    false;
+
+let gameFrame =
+    null;
+
+let deathFrame =
+    null;
+
+
+/* ==============================
+   GAME SETTINGS
+
+   v1.1
+============================== */
 
 const gravity =
     0.30;
 
-
 const flapPower =
     -5.5;
-
 
 const maxFallSpeed =
     5;
 
-
-/* =========================
-   BUILDINGS
-========================= */
-
 const buildingSpeed =
     3;
-
 
 const buildingWidth =
     80;
 
-
 const gapSize =
     175;
-
 
 const groundHeight =
     60;
 
 
-/* =========================
-   ROTATION
-========================= */
-
-const normalSpinSpeed =
-    0.025;
-
-
-/* =========================
+/* ==============================
    HIGH SCORE
-========================= */
+============================== */
 
 let highScore =
     Number(
         localStorage.getItem(
-            "neonFlapHighScore"
+            "voidFlapHighScore"
         )
     ) || 0;
 
 
-function updateHighScoreDisplay() {
+function updateHighScoreText() {
 
     menuHighScore.textContent =
         highScore;
-
 
     highScoreText.textContent =
         "HIGH SCORE: " +
@@ -311,80 +207,63 @@ function updateHighScoreDisplay() {
 }
 
 
-updateHighScoreDisplay();
+updateHighScoreText();
 
 
-/* =========================
-   STOP ANIMATIONS
-========================= */
+/* ==============================
+   SCREEN CONTROL
+============================== */
 
-function stopAnimationLoops() {
-
-    if (
-        animationFrameId !==
-        null
-    ) {
-
-        cancelAnimationFrame(
-            animationFrameId
-        );
-
-
-        animationFrameId =
-            null;
-    }
-
-
-    if (
-        deathAnimationFrameId !==
-        null
-    ) {
-
-        cancelAnimationFrame(
-            deathAnimationFrameId
-        );
-
-
-        deathAnimationFrameId =
-            null;
-    }
-}
-
-
-/* =========================
-   SCREEN FUNCTIONS
-========================= */
-
-function hideAllScreens() {
+function hideScreens() {
 
     mainMenu.classList.add(
         "hidden"
     );
 
-
     characterMenu.classList.add(
         "hidden"
     );
-
 
     howMenu.classList.add(
         "hidden"
     );
 
-
-    patchNotesMenu.classList.add(
+    patchMenu.classList.add(
         "hidden"
     );
-
 
     gameScreen.classList.add(
         "hidden"
     );
 
-
     gameOverMenu.classList.add(
         "hidden"
     );
+}
+
+
+function stopLoops() {
+
+    if (gameFrame !== null) {
+
+        cancelAnimationFrame(
+            gameFrame
+        );
+
+        gameFrame =
+            null;
+    }
+
+
+    if (deathFrame !== null) {
+
+        cancelAnimationFrame(
+            deathFrame
+        );
+
+        deathFrame =
+            null;
+    }
 }
 
 
@@ -393,82 +272,38 @@ function showMainMenu() {
     running =
         false;
 
-
     dying =
         false;
 
-
-    stopAnimationLoops();
-
+    stopLoops();
 
     document.body.classList.remove(
         "playing"
     );
 
-
-    hideAllScreens();
-
+    hideScreens();
 
     mainMenu.classList.remove(
         "hidden"
     );
 
-
-    updateHighScoreDisplay();
+    updateHighScoreText();
 }
 
 
-function showCharacterMenu() {
+function showCharacters() {
 
-    running =
-        false;
-
-
-    dying =
-        false;
-
-
-    stopAnimationLoops();
-
-
-    document.body.classList.remove(
-        "playing"
-    );
-
-
-    hideAllScreens();
-
+    hideScreens();
 
     characterMenu.classList.remove(
         "hidden"
     );
-
-
-    selectedCharacterText.textContent =
-        selectedCharacter.toUpperCase();
 }
 
 
-function showHowMenu() {
+function showHowToPlay() {
 
-    running =
-        false;
-
-
-    dying =
-        false;
-
-
-    stopAnimationLoops();
-
-
-    document.body.classList.remove(
-        "playing"
-    );
-
-
-    hideAllScreens();
-
+    hideScreens();
 
     howMenu.classList.remove(
         "hidden"
@@ -478,26 +313,9 @@ function showHowMenu() {
 
 function showPatchNotes() {
 
-    running =
-        false;
+    hideScreens();
 
-
-    dying =
-        false;
-
-
-    stopAnimationLoops();
-
-
-    document.body.classList.remove(
-        "playing"
-    );
-
-
-    hideAllScreens();
-
-
-    patchNotesMenu.classList.remove(
+    patchMenu.classList.remove(
         "hidden"
     );
 }
@@ -505,26 +323,23 @@ function showPatchNotes() {
 
 function showGame() {
 
-    hideAllScreens();
-
+    hideScreens();
 
     gameScreen.classList.remove(
         "hidden"
     );
 
-
     document.body.classList.add(
         "playing"
     );
-
 
     startGame();
 }
 
 
-/* =========================
-   RESET BIRD
-========================= */
+/* ==============================
+   BIRD
+============================== */
 
 function resetBird() {
 
@@ -547,22 +362,165 @@ function resetBird() {
 
         rotation:
             0
-
     };
 }
 
 
-/* =========================
-   CREATE BUILDINGS
-========================= */
+function updateBird() {
 
-function createBuildingPair() {
+    bird.velocity +=
+        gravity;
 
-    const minimumTop =
+
+    if (
+        bird.velocity >
+        maxFallSpeed
+    ) {
+
+        bird.velocity =
+            maxFallSpeed;
+    }
+
+
+    bird.y +=
+        bird.velocity;
+
+
+    bird.rotation +=
+        0.025;
+
+
+    if (
+        bird.velocity >
+        1
+    ) {
+
+        bird.rotation +=
+            0.015;
+    }
+}
+
+
+function flap() {
+
+    if (
+        !running ||
+        dying
+    ) {
+
+        return;
+    }
+
+
+    bird.velocity =
+        flapPower;
+
+
+    bird.rotation -=
+        0.20;
+}
+
+
+function drawBird() {
+
+    ctx.save();
+
+
+    ctx.translate(
+
+        bird.x +
+        bird.width / 2,
+
+        bird.y +
+        bird.height / 2
+    );
+
+
+    ctx.rotate(
+        bird.rotation
+    );
+
+
+    if (
+        selectedCharacter ===
+        "void"
+    ) {
+
+        ctx.shadowColor =
+            "#b300ff";
+
+        ctx.shadowBlur =
+            8;
+
+
+        ctx.drawImage(
+
+            voidImage,
+
+            -bird.width / 2,
+            -bird.height / 2,
+
+            bird.width,
+            bird.height
+        );
+    }
+
+
+    ctx.restore();
+}
+
+
+/* ==============================
+   BACKGROUND
+============================== */
+
+function drawBackground() {
+
+    ctx.drawImage(
+
+        backgroundImage,
+
+        0,
+        0,
+
+        canvas.width,
+        canvas.height
+    );
+}
+
+
+/* ==============================
+   GROUND
+============================== */
+
+function drawGround() {
+
+    ctx.drawImage(
+
+        groundImage,
+
+        0,
+
+        canvas.height -
+        groundHeight,
+
+        canvas.width,
+        groundHeight
+    );
+}
+
+
+/* ==============================
+   BUILDINGS
+============================== */
+
+function createBuilding() {
+
+    const minTop =
         35;
 
 
-    const maximumTop =
+    const maxTop =
         canvas.height -
         groundHeight -
         gapSize -
@@ -571,13 +529,15 @@ function createBuildingPair() {
 
     const topHeight =
         Math.floor(
+
             Math.random() *
             (
-                maximumTop -
-                minimumTop
+                maxTop -
+                minTop
             )
+
         ) +
-        minimumTop;
+        minTop;
 
 
     buildings.push({
@@ -596,119 +556,55 @@ function createBuildingPair() {
 
         passed:
             false
-
     });
 }
 
 
-/* =========================
-   DRAW BACKGROUND
-========================= */
+function updateBuildings() {
 
-function drawBackground() {
-
-    ctx.drawImage(
-
-        backgroundImage,
-
-        0,
-        0,
-
-        canvas.width,
-        canvas.height
-
-    );
-}
-
-
-/* =========================
-   DRAW GROUND
-========================= */
-
-function drawGround() {
-
-    ctx.drawImage(
-
-        groundImage,
-
-        0,
-
-        canvas.height -
-        groundHeight,
-
-        canvas.width,
-        groundHeight
-
-    );
-}
-
-
-/* =========================
-   DRAW CHARACTER
-========================= */
-
-function drawBird() {
-
-    ctx.save();
-
-
-    ctx.translate(
-
-        bird.x +
-        bird.width / 2,
-
-        bird.y +
-        bird.height / 2
-
-    );
-
-
-    ctx.rotate(
-        bird.rotation
-    );
+    buildingTimer++;
 
 
     if (
-        selectedCharacter ===
-        "void"
+        buildingTimer >
+        120
     ) {
 
-        ctx.shadowColor =
-            "#b300ff";
+        createBuilding();
 
-
-        ctx.shadowBlur =
-            8;
-
-
-        ctx.drawImage(
-
-            voidImage,
-
-            -bird.width / 2,
-            -bird.height / 2,
-
-            bird.width,
-            bird.height
-
-        );
+        buildingTimer =
+            0;
     }
 
 
-    ctx.restore();
+    buildings.forEach(
+        function(building) {
+
+            building.x -=
+                buildingSpeed;
+        }
+    );
+
+
+    buildings =
+        buildings.filter(
+            function(building) {
+
+                return (
+
+                    building.x +
+                    building.width >
+                    0
+                );
+            }
+        );
 }
 
-
-/* =========================
-   DRAW BUILDINGS
-========================= */
 
 function drawBuildings() {
 
     buildings.forEach(
-
         function(building) {
-
 
             const bottomY =
                 building.topHeight +
@@ -721,6 +617,8 @@ function drawBuildings() {
                 bottomY;
 
 
+            /* TOP */
+
             ctx.save();
 
 
@@ -730,7 +628,6 @@ function drawBuildings() {
                 building.width / 2,
 
                 building.topHeight / 2
-
             );
 
 
@@ -749,12 +646,13 @@ function drawBuildings() {
 
                 building.width,
                 building.topHeight
-
             );
 
 
             ctx.restore();
 
+
+            /* BOTTOM */
 
             ctx.drawImage(
 
@@ -765,20 +663,17 @@ function drawBuildings() {
 
                 building.width,
                 bottomHeight
-
             );
-
         }
-
     );
 }
 
 
-/* =========================
+/* ==============================
    VOID TRAIL
-========================= */
+============================== */
 
-function createTrailParticle() {
+function createTrail() {
 
     if (
         selectedCharacter !==
@@ -792,7 +687,7 @@ function createTrailParticle() {
     trailParticles.push({
 
         x:
-            bird.x + 6,
+            bird.x + 5,
 
         y:
             bird.y +
@@ -807,14 +702,14 @@ function createTrailParticle() {
 
         speedX:
             Math.random() *
-            1.5 + 0.5,
+            1.4 + 0.5,
 
         speedY:
             (
                 Math.random() -
                 0.5
-            ) * 1.5
-
+            ) *
+            1.4
     });
 }
 
@@ -822,54 +717,36 @@ function createTrailParticle() {
 function updateTrail() {
 
     trailParticles.forEach(
-
         function(particle) {
 
             particle.x -=
                 particle.speedX;
 
-
             particle.y +=
                 particle.speedY;
 
-
             particle.life -=
                 0.04;
-
         }
-
     );
 
 
     trailParticles =
         trailParticles.filter(
-
             function(particle) {
 
                 return (
                     particle.life >
                     0
                 );
-
             }
-
         );
 }
 
 
 function drawTrail() {
 
-    if (
-        selectedCharacter !==
-        "void"
-    ) {
-
-        return;
-    }
-
-
     trailParticles.forEach(
-
         function(particle) {
 
             ctx.save();
@@ -898,118 +775,22 @@ function drawTrail() {
 
                 particle.size,
                 particle.size
-
             );
 
 
             ctx.restore();
-
         }
-
     );
 }
 
 
-/* =========================
-   UPDATE BIRD
-========================= */
-
-function updateBird() {
-
-    bird.velocity +=
-        gravity;
-
-
-    if (
-        bird.velocity >
-        maxFallSpeed
-    ) {
-
-        bird.velocity =
-            maxFallSpeed;
-    }
-
-
-    bird.y +=
-        bird.velocity;
-
-
-    bird.rotation +=
-        normalSpinSpeed;
-
-
-    if (
-        bird.velocity >
-        1
-    ) {
-
-        bird.rotation +=
-            0.015;
-    }
-}
-
-
-/* =========================
-   UPDATE BUILDINGS
-========================= */
-
-function updateBuildings() {
-
-    buildingTimer++;
-
-
-    if (
-        buildingTimer >
-        120
-    ) {
-
-        createBuildingPair();
-
-
-        buildingTimer =
-            0;
-    }
-
-
-    buildings.forEach(
-
-        function(building) {
-
-            building.x -=
-                buildingSpeed;
-
-        }
-
-    );
-
-
-    buildings =
-        buildings.filter(
-
-            function(building) {
-
-                return (
-
-                    building.x +
-                    building.width >
-                    0
-
-                );
-
-            }
-
-        );
-}
-
-
-/* =========================
+/* ==============================
    SCORE
-========================= */
+============================== */
 
 function updateScore() {
 
     buildings.forEach(
-
         function(building) {
 
             if (
@@ -1032,18 +813,15 @@ function updateScore() {
                 scoreText.textContent =
                     "SCORE: " +
                     score;
-
             }
-
         }
-
     );
 }
 
 
-/* =========================
+/* ==============================
    COLLISION
-========================= */
+============================== */
 
 function checkCollision() {
 
@@ -1051,30 +829,27 @@ function checkCollision() {
         6;
 
 
-    const birdLeft =
+    const left =
         bird.x +
         padding;
 
-
-    const birdRight =
+    const right =
         bird.x +
         bird.width -
         padding;
 
-
-    const birdTop =
+    const top =
         bird.y +
         padding;
 
-
-    const birdBottom =
+    const bottom =
         bird.y +
         bird.height -
         padding;
 
 
     if (
-        birdTop <= 0
+        top <= 0
     ) {
 
         return true;
@@ -1083,8 +858,7 @@ function checkCollision() {
 
     if (
 
-        birdBottom >=
-
+        bottom >=
         canvas.height -
         groundHeight
 
@@ -1095,52 +869,47 @@ function checkCollision() {
 
 
     for (
-        let building of buildings
+        const building of buildings
     ) {
 
-        const left =
+        const buildingLeft =
             building.x;
 
 
-        const right =
+        const buildingRight =
             building.x +
             building.width;
 
 
-        const topBottom =
-            building.topHeight;
-
-
-        const bottomTop =
+        const bottomBuildingTop =
             building.topHeight +
             building.gap;
 
 
         const touchingX =
 
-            birdRight >
-            left &&
+            right >
+            buildingLeft &&
 
-            birdLeft <
-            right;
+            left <
+            buildingRight;
 
 
         const touchingTop =
 
-            birdTop <
-            topBottom;
+            top <
+            building.topHeight;
 
 
         const touchingBottom =
 
-            birdBottom >
-            bottomTop;
+            bottom >
+            bottomBuildingTop;
 
 
         if (
 
             touchingX &&
-
             (
                 touchingTop ||
                 touchingBottom
@@ -1157,47 +926,14 @@ function checkCollision() {
 }
 
 
-/* =========================
-   FLAP
-========================= */
-
-function flap() {
-
-    if (
-        !running ||
-        dying
-    ) {
-
-        return;
-    }
-
-
-    bird.velocity =
-        flapPower;
-
-
-    bird.rotation -=
-        0.20;
-}
-
-
-/* =========================
+/* ==============================
    DEATH EXPLOSION
-========================= */
+============================== */
 
-function createDeathExplosion() {
+function createExplosion() {
 
     deathParticles =
         [];
-
-
-    if (
-        selectedCharacter !==
-        "void"
-    ) {
-
-        return;
-    }
 
 
     for (
@@ -1220,76 +956,66 @@ function createDeathExplosion() {
                 Math.random() *
                 7 + 2,
 
-            speedX:
+            dx:
                 (
                     Math.random() -
                     0.5
-                ) * 12,
+                ) *
+                12,
 
-            speedY:
+            dy:
                 (
                     Math.random() -
                     0.5
-                ) * 12,
+                ) *
+                12,
 
             life:
                 1
-
         });
     }
 }
 
 
-function updateDeathParticles() {
+function updateExplosion() {
 
     deathParticles.forEach(
-
         function(particle) {
 
             particle.x +=
-                particle.speedX;
-
+                particle.dx;
 
             particle.y +=
-                particle.speedY;
+                particle.dy;
 
-
-            particle.speedY +=
+            particle.dy +=
                 0.08;
 
-
-            particle.speedX *=
+            particle.dx *=
                 0.98;
-
 
             particle.life -=
                 0.025;
-
         }
-
     );
 
 
     deathParticles =
         deathParticles.filter(
-
             function(particle) {
 
                 return (
                     particle.life >
                     0
                 );
-
             }
-
         );
 }
 
 
-function drawDeathParticles() {
+function drawExplosion() {
 
     deathParticles.forEach(
-
         function(particle) {
 
             ctx.save();
@@ -1318,25 +1044,22 @@ function drawDeathParticles() {
 
                 particle.size,
                 particle.size
-
             );
 
 
             ctx.restore();
-
         }
-
     );
 }
 
 
-/* =========================
+/* ==============================
    START GAME
-========================= */
+============================== */
 
 function startGame() {
 
-    stopAnimationLoops();
+    stopLoops();
 
 
     resetBird();
@@ -1345,10 +1068,8 @@ function startGame() {
     buildings =
         [];
 
-
     trailParticles =
         [];
-
 
     deathParticles =
         [];
@@ -1378,7 +1099,6 @@ function startGame() {
     running =
         true;
 
-
     dying =
         false;
 
@@ -1392,16 +1112,13 @@ function startGame() {
 }
 
 
-/* =========================
-   GAME LOOP
-========================= */
+/* ==============================
+   MAIN LOOP
+============================== */
 
 function gameLoop() {
 
-    if (
-        !running
-    ) {
-
+    if (!running) {
         return;
     }
 
@@ -1413,7 +1130,6 @@ function gameLoop() {
 
         canvas.width,
         canvas.height
-
     );
 
 
@@ -1423,8 +1139,7 @@ function gameLoop() {
     updateBird();
 
 
-    createTrailParticle();
-
+    createTrail();
 
     updateTrail();
 
@@ -1453,28 +1168,24 @@ function gameLoop() {
 
         startDeath();
 
-
         return;
     }
 
 
-    animationFrameId =
+    gameFrame =
         requestAnimationFrame(
             gameLoop
         );
 }
 
 
-/* =========================
-   DEATH
-========================= */
+/* ==============================
+   DEATH LOOP
+============================== */
 
 function startDeath() {
 
-    if (
-        dying
-    ) {
-
+    if (dying) {
         return;
     }
 
@@ -1482,12 +1193,11 @@ function startDeath() {
     running =
         false;
 
-
     dying =
         true;
 
 
-    createDeathExplosion();
+    createExplosion();
 
 
     deathLoop();
@@ -1496,10 +1206,7 @@ function startDeath() {
 
 function deathLoop() {
 
-    if (
-        !dying
-    ) {
-
+    if (!dying) {
         return;
     }
 
@@ -1511,7 +1218,6 @@ function deathLoop() {
 
         canvas.width,
         canvas.height
-
     );
 
 
@@ -1526,14 +1232,12 @@ function deathLoop() {
 
     updateTrail();
 
-
     drawTrail();
 
 
-    updateDeathParticles();
+    updateExplosion();
 
-
-    drawDeathParticles();
+    drawExplosion();
 
 
     if (
@@ -1543,21 +1247,20 @@ function deathLoop() {
 
         finishGameOver();
 
-
         return;
     }
 
 
-    deathAnimationFrameId =
+    deathFrame =
         requestAnimationFrame(
             deathLoop
         );
 }
 
 
-/* =========================
+/* ==============================
    GAME OVER
-========================= */
+============================== */
 
 function finishGameOver() {
 
@@ -1570,7 +1273,7 @@ function finishGameOver() {
     );
 
 
-    let gotHighScore =
+    let newRecord =
         false;
 
 
@@ -1583,16 +1286,15 @@ function finishGameOver() {
             score;
 
 
-        gotHighScore =
+        newRecord =
             true;
 
 
         localStorage.setItem(
 
-            "neonFlapHighScore",
+            "voidFlapHighScore",
 
             highScore
-
         );
     }
 
@@ -1602,24 +1304,13 @@ function finishGameOver() {
         score;
 
 
-    if (
-        gotHighScore
-    ) {
-
-        newHighScore.textContent =
-            "NEW HIGH SCORE!";
-
-    }
-
-    else {
-
-        newHighScore.textContent =
-            "";
-
-    }
+    newHighScore.textContent =
+        newRecord
+            ? "NEW HIGH SCORE!"
+            : "";
 
 
-    updateHighScoreDisplay();
+    updateHighScoreText();
 
 
     gameOverMenu.classList.remove(
@@ -1628,109 +1319,56 @@ function finishGameOver() {
 }
 
 
-/* =========================
-   CHARACTER SELECT
-========================= */
+/* ==============================
+   CHARACTER SCREEN
+============================== */
 
 voidCharacter.addEventListener(
-
-    "pointerdown",
-
-    function(event) {
-
-        event.preventDefault();
-
+    "click",
+    function() {
 
         selectedCharacter =
             "void";
-
-
-        selectedCharacterText.textContent =
-            "VOID";
-
-
-        voidCharacter.classList.add(
-            "selected"
-        );
-
     }
-
 );
 
 
-/* =========================
-   LOCKED CHARACTERS
-========================= */
-
 lockedCharacters.forEach(
-
     function(card) {
 
         card.addEventListener(
-
-            "pointerdown",
-
+            "click",
             function(event) {
 
                 event.preventDefault();
 
 
-                lockedCharacters.forEach(
-
-                    function(otherCard) {
-
-                        if (
-                            otherCard !==
-                            card
-                        ) {
-
-                            otherCard.classList.remove(
-                                "mobile-show-message"
-                            );
-
-                        }
-
-                    }
-
-                );
-
-
-                card.classList.toggle(
-                    "mobile-show-message"
+                card.classList.add(
+                    "show-message"
                 );
 
 
                 setTimeout(
-
                     function() {
 
                         card.classList.remove(
-                            "mobile-show-message"
+                            "show-message"
                         );
-
                     },
-
-                    1800
-
+                    1500
                 );
-
             }
-
         );
-
     }
-
 );
 
 
-/* =========================
-   KEYBOARD
-========================= */
+/* ==============================
+   CONTROLS
+============================== */
 
 document.addEventListener(
-
     "keydown",
-
     function(event) {
 
         if (
@@ -1740,24 +1378,14 @@ document.addEventListener(
 
             event.preventDefault();
 
-
             flap();
-
         }
-
     }
-
 );
 
 
-/* =========================
-   POINTER / TOUCH
-========================= */
-
 gameScreen.addEventListener(
-
     "pointerdown",
-
     function(event) {
 
         if (
@@ -1771,142 +1399,87 @@ gameScreen.addEventListener(
 
         event.preventDefault();
 
-
         flap();
-
     }
-
 );
 
 
-/* =========================
-   BUTTONS
-========================= */
+gameScreen.addEventListener(
+    "contextmenu",
+    function(event) {
+
+        event.preventDefault();
+    }
+);
+
+
+/* ==============================
+   MENU BUTTONS
+============================== */
 
 playButton.addEventListener(
-
     "click",
-
-    function() {
-
-        showGame();
-
-    }
-
+    showGame
 );
 
 
 characterButton.addEventListener(
-
     "click",
-
-    function() {
-
-        showCharacterMenu();
-
-    }
-
+    showCharacters
 );
 
 
 howButton.addEventListener(
-
     "click",
-
-    function() {
-
-        showHowMenu();
-
-    }
-
+    showHowToPlay
 );
 
 
-patchNotesButton.addEventListener(
-
+patchButton.addEventListener(
     "click",
-
-    function() {
-
-        showPatchNotes();
-
-    }
-
+    showPatchNotes
 );
 
 
 characterBackButton.addEventListener(
-
     "click",
-
-    function() {
-
-        showMainMenu();
-
-    }
-
+    showMainMenu
 );
 
 
 howBackButton.addEventListener(
-
     "click",
-
-    function() {
-
-        showMainMenu();
-
-    }
-
+    showMainMenu
 );
 
 
-patchNotesBackButton.addEventListener(
-
+patchBackButton.addEventListener(
     "click",
-
-    function() {
-
-        showMainMenu();
-
-    }
-
+    showMainMenu
 );
 
 
 retryButton.addEventListener(
-
     "click",
-
     function() {
 
         gameOverMenu.classList.add(
             "hidden"
         );
 
-
         startGame();
-
     }
-
 );
 
 
 menuButton.addEventListener(
-
     "click",
-
-    function() {
-
-        showMainMenu();
-
-    }
-
+    showMainMenu
 );
 
 
-/* =========================
+/* ==============================
    START
-========================= */
+============================== */
 
 showMainMenu();
