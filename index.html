@@ -26,13 +26,8 @@
 
 <div class="game-shell">
 
-
     <!-- MAIN MENU -->
-
-    <div
-        id="mainMenu"
-        class="main-menu"
-    >
+    <section id="mainMenu" class="screen main-menu">
 
         <img
             src="images/building.png"
@@ -49,55 +44,41 @@
         <img
             src="images/logo.png"
             class="menu-logo"
-            alt="Void FlapGame Logo"
+            alt="Void FlapGame"
         >
 
         <img
             src="images/birdvoid.png"
-            class="menu-bird"
-            alt="Void Character"
+            class="menu-void"
+            alt="Void"
         >
 
         <div class="menu-buttons">
 
-            <button
-                id="playButton"
-                type="button"
-            >
+            <button id="playButton">
                 PLAY
             </button>
 
-            <button
-                id="characterButton"
-                type="button"
-            >
+            <button id="characterButton">
                 CHARACTERS
             </button>
 
-            <button
-                id="howButton"
-                type="button"
-            >
+            <button id="howButton">
                 HOW TO PLAY
             </button>
 
-            <button
-                id="patchNotesButton"
-                type="button"
-            >
+            <button id="patchButton">
                 PATCH NOTES
             </button>
 
         </div>
 
-        <p class="menu-highscore">
+        <p class="menu-score">
             HIGH SCORE:
-            <span id="menuHighScore">
-                0
-            </span>
+            <span id="menuHighScore">0</span>
         </p>
 
-        <p class="tiny-text">
+        <p class="small-text">
             probably don't crash
         </p>
 
@@ -107,38 +88,29 @@
             alt=""
         >
 
-    </div>
+    </section>
 
 
-    <!-- CHARACTER SELECT -->
-
-    <div
+    <!-- CHARACTERS -->
+    <section
         id="characterMenu"
-        class="character-menu hidden"
+        class="screen panel-screen hidden"
     >
 
-        <div class="character-box">
+        <div class="panel character-panel">
 
-            <h2>
-                SELECT CHARACTER
-            </h2>
+            <h2>SELECT CHARACTER</h2>
 
-            <p class="character-subtitle">
+            <p class="subtitle">
                 current selection:
-                <span id="selectedCharacterText">
-                    VOID
-                </span>
+                <strong>VOID</strong>
             </p>
 
             <div class="character-grid">
 
-
-                <!-- VOID -->
-
                 <button
                     id="voidCharacter"
                     class="character-card selected"
-                    type="button"
                 >
 
                     <img
@@ -150,21 +122,16 @@
                         VOID
                     </span>
 
-                    <span class="character-status">
+                    <span class="selected-label">
                         SELECTED
                     </span>
 
                 </button>
 
 
-                <!-- LOCKED 1 -->
+                <button class="character-card locked">
 
-                <button
-                    class="character-card locked"
-                    type="button"
-                >
-
-                    <span class="lock-icon">
+                    <span class="question-mark">
                         ?
                     </span>
 
@@ -176,21 +143,16 @@
                         LOCKED
                     </span>
 
-                    <span class="locked-message">
+                    <span class="coming-soon">
                         COMING SOON (MIGHT)
                     </span>
 
                 </button>
 
 
-                <!-- LOCKED 2 -->
+                <button class="character-card locked">
 
-                <button
-                    class="character-card locked"
-                    type="button"
-                >
-
-                    <span class="lock-icon">
+                    <span class="question-mark">
                         ?
                     </span>
 
@@ -202,21 +164,16 @@
                         LOCKED
                     </span>
 
-                    <span class="locked-message">
+                    <span class="coming-soon">
                         COMING SOON (MIGHT)
                     </span>
 
                 </button>
 
 
-                <!-- LOCKED 3 -->
+                <button class="character-card locked">
 
-                <button
-                    class="character-card locked"
-                    type="button"
-                >
-
-                    <span class="lock-icon">
+                    <span class="question-mark">
                         ?
                     </span>
 
@@ -228,21 +185,16 @@
                         LOCKED
                     </span>
 
-                    <span class="locked-message">
+                    <span class="coming-soon">
                         COMING SOON (MIGHT)
                     </span>
 
                 </button>
 
 
-                <!-- LOCKED 4 -->
+                <button class="character-card locked">
 
-                <button
-                    class="character-card locked"
-                    type="button"
-                >
-
-                    <span class="lock-icon">
+                    <span class="question-mark">
                         ?
                     </span>
 
@@ -254,7 +206,7 @@
                         LOCKED
                     </span>
 
-                    <span class="locked-message">
+                    <span class="coming-soon">
                         COMING SOON (MIGHT)
                     </span>
 
@@ -264,33 +216,30 @@
 
             <button
                 id="characterBackButton"
-                type="button"
+                class="back-button"
             >
                 BACK
             </button>
 
         </div>
 
-    </div>
+    </section>
 
 
     <!-- HOW TO PLAY -->
-
-    <div
+    <section
         id="howMenu"
-        class="how-menu hidden"
+        class="screen panel-screen hidden"
     >
 
-        <div class="how-box">
+        <div class="panel">
 
-            <h2>
-                HOW TO PLAY
-            </h2>
+            <h2>HOW TO PLAY</h2>
 
             <img
                 src="images/birdvoid.png"
-                class="how-bird"
-                alt="Void Character"
+                class="panel-void"
+                alt="Void"
             >
 
             <p>
@@ -310,41 +259,33 @@
             </p>
 
             <p>
-                don't hit the ground either.
+                don't hit the ground.
             </p>
 
             <p>
                 if you die, skill issue.
             </p>
 
-            <button
-                id="howBackButton"
-                type="button"
-            >
+            <button id="howBackButton">
                 BACK
             </button>
 
         </div>
 
-    </div>
+    </section>
 
 
     <!-- PATCH NOTES -->
-
-    <div
-        id="patchNotesMenu"
-        class="patch-notes-menu hidden"
+    <section
+        id="patchMenu"
+        class="screen panel-screen hidden"
     >
 
-        <div class="patch-notes-box">
+        <div class="panel patch-panel">
 
-            <h2>
-                PATCH NOTES
-            </h2>
+            <h2>PATCH NOTES</h2>
 
-            <h3>
-                v1.1
-            </h3>
+            <h3>v1.1</h3>
 
             <div class="patch-list">
 
@@ -361,11 +302,11 @@
                 </p>
 
                 <p>
-                    - VOID now explodes into purple pixels when he dies
+                    - VOID now explodes into purple pixels
                 </p>
 
                 <p>
-                    - added a character select screen
+                    - added character select
                 </p>
 
                 <p>
@@ -394,64 +335,54 @@
                 heavy emphasis on might.
             </p>
 
-            <button
-                id="patchNotesBackButton"
-                type="button"
-            >
+            <button id="patchBackButton">
                 BACK
             </button>
 
         </div>
 
-    </div>
+    </section>
 
 
     <!-- GAME -->
-
-    <div
+    <section
         id="gameScreen"
-        class="game-screen hidden"
+        class="screen game-screen hidden"
     >
 
         <div class="game-topbar">
 
-            <p id="scoreText">
+            <span id="scoreText">
                 SCORE: 0
-            </p>
+            </span>
 
-            <p id="highScoreText">
+            <span id="highScoreText">
                 HIGH SCORE: 0
-            </p>
+            </span>
 
         </div>
 
-        <div class="canvas-wrapper">
+        <canvas
+            id="gameCanvas"
+            width="700"
+            height="450"
+        ></canvas>
 
-            <canvas
-                id="gameCanvas"
-                width="700"
-                height="450"
-            >
-            </canvas>
-
-        </div>
-
-        <p class="controls desktop-controls">
+        <p class="desktop-help">
             SPACE / CLICK
         </p>
 
-        <p class="controls mobile-controls">
+        <p class="mobile-help">
             TAP TO FLAP
         </p>
 
-    </div>
+    </section>
 
 
     <!-- GAME OVER -->
-
     <div
         id="gameOverMenu"
-        class="game-over-menu hidden"
+        class="game-over hidden"
     >
 
         <div class="game-over-box">
@@ -466,34 +397,19 @@
                 SCORE: 0
             </p>
 
-            <p
-                id="newHighScore"
-                class="new-high-score"
-            >
-            </p>
+            <p id="newHighScore"></p>
 
-            <div class="game-over-buttons">
+            <button id="retryButton">
+                TRY AGAIN
+            </button>
 
-                <button
-                    id="retryButton"
-                    type="button"
-                >
-                    TRY AGAIN
-                </button>
-
-                <button
-                    id="menuButton"
-                    type="button"
-                >
-                    MAIN MENU
-                </button>
-
-            </div>
+            <button id="menuButton">
+                MAIN MENU
+            </button>
 
         </div>
 
     </div>
-
 
 </div>
 
