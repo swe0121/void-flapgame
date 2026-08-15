@@ -20,6 +20,12 @@ const howMenu =
     );
 
 
+const patchNotesMenu =
+    document.getElementById(
+        "patchNotesMenu"
+    );
+
+
 const gameScreen =
     document.getElementById(
         "gameScreen"
@@ -44,21 +50,33 @@ const characterButton =
     );
 
 
-const characterBackButton =
-    document.getElementById(
-        "characterBackButton"
-    );
-
-
 const howButton =
     document.getElementById(
         "howButton"
     );
 
 
+const patchNotesButton =
+    document.getElementById(
+        "patchNotesButton"
+    );
+
+
+const characterBackButton =
+    document.getElementById(
+        "characterBackButton"
+    );
+
+
 const howBackButton =
     document.getElementById(
         "howBackButton"
+    );
+
+
+const patchNotesBackButton =
+    document.getElementById(
+        "patchNotesBackButton"
     );
 
 
@@ -134,7 +152,6 @@ const highScoreText =
     );
 
 
-
 /* =========================
    CHARACTER SYSTEM
 ========================= */
@@ -149,7 +166,6 @@ const voidImage =
 
 voidImage.src =
     "images/birdvoid.png";
-
 
 
 /* =========================
@@ -178,7 +194,6 @@ const groundImage =
 
 groundImage.src =
     "images/ground.png";
-
 
 
 /* =========================
@@ -216,7 +231,6 @@ let deathAnimationFrameId =
     null;
 
 
-
 /* =========================
    PARTICLES
 ========================= */
@@ -227,7 +241,6 @@ let trailParticles =
 
 let deathParticles =
     [];
-
 
 
 /* =========================
@@ -244,7 +257,6 @@ const flapPower =
 
 const maxFallSpeed =
     5;
-
 
 
 /* =========================
@@ -267,14 +279,12 @@ const groundHeight =
     60;
 
 
-
 /* =========================
    ROTATION
 ========================= */
 
 const normalSpinSpeed =
     0.025;
-
 
 
 /* =========================
@@ -287,7 +297,6 @@ let highScore =
             "neonFlapHighScore"
         )
     ) || 0;
-
 
 
 function updateHighScoreDisplay() {
@@ -303,7 +312,6 @@ function updateHighScoreDisplay() {
 
 
 updateHighScoreDisplay();
-
 
 
 /* =========================
@@ -343,7 +351,6 @@ function stopAnimationLoops() {
 }
 
 
-
 /* =========================
    SCREEN FUNCTIONS
 ========================= */
@@ -365,6 +372,11 @@ function hideAllScreens() {
     );
 
 
+    patchNotesMenu.classList.add(
+        "hidden"
+    );
+
+
     gameScreen.classList.add(
         "hidden"
     );
@@ -374,7 +386,6 @@ function hideAllScreens() {
         "hidden"
     );
 }
-
 
 
 function showMainMenu() {
@@ -405,7 +416,6 @@ function showMainMenu() {
 
     updateHighScoreDisplay();
 }
-
 
 
 function showCharacterMenu() {
@@ -439,7 +449,6 @@ function showCharacterMenu() {
 }
 
 
-
 function showHowMenu() {
 
     running =
@@ -467,6 +476,32 @@ function showHowMenu() {
 }
 
 
+function showPatchNotes() {
+
+    running =
+        false;
+
+
+    dying =
+        false;
+
+
+    stopAnimationLoops();
+
+
+    document.body.classList.remove(
+        "playing"
+    );
+
+
+    hideAllScreens();
+
+
+    patchNotesMenu.classList.remove(
+        "hidden"
+    );
+}
+
 
 function showGame() {
 
@@ -485,7 +520,6 @@ function showGame() {
 
     startGame();
 }
-
 
 
 /* =========================
@@ -516,7 +550,6 @@ function resetBird() {
 
     };
 }
-
 
 
 /* =========================
@@ -568,7 +601,6 @@ function createBuildingPair() {
 }
 
 
-
 /* =========================
    DRAW BACKGROUND
 ========================= */
@@ -587,7 +619,6 @@ function drawBackground() {
 
     );
 }
-
 
 
 /* =========================
@@ -610,7 +641,6 @@ function drawGround() {
 
     );
 }
-
 
 
 /* =========================
@@ -669,7 +699,6 @@ function drawBird() {
 }
 
 
-
 /* =========================
    DRAW BUILDINGS
 ========================= */
@@ -691,9 +720,6 @@ function drawBuildings() {
                 groundHeight -
                 bottomY;
 
-
-
-            /* TOP BUILDING */
 
             ctx.save();
 
@@ -730,9 +756,6 @@ function drawBuildings() {
             ctx.restore();
 
 
-
-            /* BOTTOM BUILDING */
-
             ctx.drawImage(
 
                 buildingImage,
@@ -746,9 +769,9 @@ function drawBuildings() {
             );
 
         }
+
     );
 }
-
 
 
 /* =========================
@@ -796,7 +819,6 @@ function createTrailParticle() {
 }
 
 
-
 function updateTrail() {
 
     trailParticles.forEach(
@@ -815,6 +837,7 @@ function updateTrail() {
                 0.04;
 
         }
+
     );
 
 
@@ -829,9 +852,9 @@ function updateTrail() {
                 );
 
             }
+
         );
 }
-
 
 
 function drawTrail() {
@@ -882,9 +905,9 @@ function drawTrail() {
             ctx.restore();
 
         }
+
     );
 }
-
 
 
 /* =========================
@@ -926,7 +949,6 @@ function updateBird() {
 }
 
 
-
 /* =========================
    UPDATE BUILDINGS
 ========================= */
@@ -957,6 +979,7 @@ function updateBuildings() {
                 buildingSpeed;
 
         }
+
     );
 
 
@@ -974,9 +997,9 @@ function updateBuildings() {
                 );
 
             }
+
         );
 }
-
 
 
 /* =========================
@@ -1013,9 +1036,9 @@ function updateScore() {
             }
 
         }
+
     );
 }
-
 
 
 /* =========================
@@ -1050,9 +1073,6 @@ function checkCollision() {
         padding;
 
 
-
-    /* CEILING */
-
     if (
         birdTop <= 0
     ) {
@@ -1060,9 +1080,6 @@ function checkCollision() {
         return true;
     }
 
-
-
-    /* GROUND */
 
     if (
 
@@ -1076,9 +1093,6 @@ function checkCollision() {
         return true;
     }
 
-
-
-    /* BUILDINGS */
 
     for (
         let building of buildings
@@ -1143,7 +1157,6 @@ function checkCollision() {
 }
 
 
-
 /* =========================
    FLAP
 ========================= */
@@ -1168,9 +1181,8 @@ function flap() {
 }
 
 
-
 /* =========================
-   VOID DEATH EXPLOSION
+   DEATH EXPLOSION
 ========================= */
 
 function createDeathExplosion() {
@@ -1228,7 +1240,6 @@ function createDeathExplosion() {
 }
 
 
-
 function updateDeathParticles() {
 
     deathParticles.forEach(
@@ -1255,6 +1266,7 @@ function updateDeathParticles() {
                 0.025;
 
         }
+
     );
 
 
@@ -1269,9 +1281,9 @@ function updateDeathParticles() {
                 );
 
             }
+
         );
 }
-
 
 
 function drawDeathParticles() {
@@ -1313,9 +1325,9 @@ function drawDeathParticles() {
             ctx.restore();
 
         }
+
     );
 }
-
 
 
 /* =========================
@@ -1378,7 +1390,6 @@ function startGame() {
 
     gameLoop();
 }
-
 
 
 /* =========================
@@ -1454,7 +1465,6 @@ function gameLoop() {
 }
 
 
-
 /* =========================
    DEATH
 ========================= */
@@ -1482,7 +1492,6 @@ function startDeath() {
 
     deathLoop();
 }
-
 
 
 function deathLoop() {
@@ -1544,7 +1553,6 @@ function deathLoop() {
             deathLoop
         );
 }
-
 
 
 /* =========================
@@ -1620,7 +1628,6 @@ function finishGameOver() {
 }
 
 
-
 /* =========================
    CHARACTER SELECT
 ========================= */
@@ -1647,12 +1654,12 @@ voidCharacter.addEventListener(
         );
 
     }
+
 );
 
 
-
 /* =========================
-   LOCKED CHARACTER MOBILE
+   LOCKED CHARACTERS
 ========================= */
 
 lockedCharacters.forEach(
@@ -1704,6 +1711,7 @@ lockedCharacters.forEach(
                     },
 
                     1800
+
                 );
 
             }
@@ -1715,9 +1723,8 @@ lockedCharacters.forEach(
 );
 
 
-
 /* =========================
-   KEYBOARD CONTROL
+   KEYBOARD
 ========================= */
 
 document.addEventListener(
@@ -1739,12 +1746,12 @@ document.addEventListener(
         }
 
     }
+
 );
 
 
-
 /* =========================
-   POINTER / TOUCH CONTROL
+   POINTER / TOUCH
 ========================= */
 
 gameScreen.addEventListener(
@@ -1772,27 +1779,8 @@ gameScreen.addEventListener(
 );
 
 
-
 /* =========================
-   PREVENT MOBILE GESTURES
-========================= */
-
-gameScreen.addEventListener(
-
-    "contextmenu",
-
-    function(event) {
-
-        event.preventDefault();
-
-    }
-
-);
-
-
-
-/* =========================
-   MENU BUTTONS
+   BUTTONS
 ========================= */
 
 playButton.addEventListener(
@@ -1808,7 +1796,6 @@ playButton.addEventListener(
 );
 
 
-
 characterButton.addEventListener(
 
     "click",
@@ -1820,21 +1807,6 @@ characterButton.addEventListener(
     }
 
 );
-
-
-
-characterBackButton.addEventListener(
-
-    "click",
-
-    function() {
-
-        showMainMenu();
-
-    }
-
-);
-
 
 
 howButton.addEventListener(
@@ -1850,6 +1822,31 @@ howButton.addEventListener(
 );
 
 
+patchNotesButton.addEventListener(
+
+    "click",
+
+    function() {
+
+        showPatchNotes();
+
+    }
+
+);
+
+
+characterBackButton.addEventListener(
+
+    "click",
+
+    function() {
+
+        showMainMenu();
+
+    }
+
+);
+
 
 howBackButton.addEventListener(
 
@@ -1864,6 +1861,18 @@ howBackButton.addEventListener(
 );
 
 
+patchNotesBackButton.addEventListener(
+
+    "click",
+
+    function() {
+
+        showMainMenu();
+
+    }
+
+);
+
 
 retryButton.addEventListener(
 
@@ -1876,17 +1885,11 @@ retryButton.addEventListener(
         );
 
 
-        document.body.classList.add(
-            "playing"
-        );
-
-
         startGame();
 
     }
 
 );
-
 
 
 menuButton.addEventListener(
@@ -1900,38 +1903,6 @@ menuButton.addEventListener(
     }
 
 );
-
-
-
-/* =========================
-   TAB / APP VISIBILITY
-========================= */
-
-document.addEventListener(
-
-    "visibilitychange",
-
-    function() {
-
-        /*
-            Prevents weird accidental
-            jumping after switching apps.
-        */
-
-        if (
-            document.hidden &&
-            running
-        ) {
-
-            bird.velocity =
-                0;
-
-        }
-
-    }
-
-);
-
 
 
 /* =========================
