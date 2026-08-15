@@ -9,7 +9,6 @@
 
 html {
     width: 100%;
-
     min-height: 100%;
 
     background-color: #10081c;
@@ -29,7 +28,6 @@ body {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     font-family:
@@ -65,7 +63,6 @@ img {
 }
 
 
-
 /* =========================
    GAME SHELL
 ========================= */
@@ -89,7 +86,6 @@ img {
     box-shadow:
         12px 12px #00ffff;
 }
-
 
 
 /* =========================
@@ -156,7 +152,6 @@ button:active {
 }
 
 
-
 /* =========================
    MAIN MENU
 ========================= */
@@ -173,7 +168,6 @@ button:active {
     flex-direction: column;
 
     justify-content: center;
-
     align-items: center;
 
     overflow: hidden;
@@ -240,7 +234,7 @@ button:active {
 
     flex-direction: column;
 
-    gap: 16px;
+    gap: 14px;
 
     width: 260px;
 
@@ -251,7 +245,7 @@ button:active {
 
 
 .menu-highscore {
-    margin-top: 25px;
+    margin-top: 22px;
 
     color: #00ffff;
 
@@ -277,7 +271,6 @@ button:active {
 
     font-size: 12px;
 }
-
 
 
 /* =========================
@@ -331,7 +324,6 @@ button:active {
 }
 
 
-
 /* =========================
    CHARACTER MENU
 ========================= */
@@ -344,7 +336,6 @@ button:active {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     padding: 30px;
@@ -384,9 +375,6 @@ button:active {
     color: #ff66c4;
 
     letter-spacing: 4px;
-
-    text-shadow:
-        3px 3px #5c1a70;
 }
 
 
@@ -402,7 +390,6 @@ button:active {
 
     font-weight: bold;
 }
-
 
 
 /* =========================
@@ -434,7 +421,6 @@ button:active {
     flex-direction: column;
 
     justify-content: center;
-
     align-items: center;
 
     padding: 12px;
@@ -497,7 +483,6 @@ button:active {
 }
 
 
-
 /* =========================
    LOCKED CHARACTERS
 ========================= */
@@ -535,7 +520,6 @@ button:active {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     color: #c77dff;
@@ -605,7 +589,6 @@ button:active {
 }
 
 
-
 /* =========================
    HOW TO PLAY
 ========================= */
@@ -618,7 +601,6 @@ button:active {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     padding: 30px;
@@ -684,6 +666,91 @@ button:active {
         2s infinite ease-in-out;
 }
 
+
+/* =========================
+   PATCH NOTES
+========================= */
+
+.patch-notes-menu {
+    width: 100%;
+
+    min-height: 600px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    background-image:
+        url("images/background.png");
+
+    background-size: cover;
+
+    background-position: center;
+}
+
+
+.patch-notes-box {
+    width: 560px;
+
+    max-width: 92%;
+
+    padding: 35px;
+
+    text-align: center;
+
+    background-color:
+        rgba(15, 8, 25, 0.96);
+
+    border:
+        4px solid #c77dff;
+
+    box-shadow:
+        10px 10px #00ffff;
+}
+
+
+.patch-notes-box h2 {
+    margin-top: 0;
+
+    color: #ff66c4;
+
+    letter-spacing: 4px;
+}
+
+
+.patch-notes-box h3 {
+    color: #00ffff;
+
+    font-size: 22px;
+}
+
+
+.patch-list {
+    margin:
+        25px 0;
+
+    text-align: left;
+}
+
+
+.patch-list p {
+    margin:
+        10px 0;
+
+    color: white;
+
+    line-height: 1.45;
+}
+
+
+.patch-ending {
+    color: #c77dff;
+
+    line-height: 1.6;
+}
 
 
 /* =========================
@@ -783,7 +850,6 @@ button:active {
 }
 
 
-
 /* =========================
    GAME OVER
 ========================= */
@@ -798,7 +864,6 @@ button:active {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     padding: 25px;
@@ -871,7 +936,6 @@ button:active {
 }
 
 
-
 /* =========================
    ANIMATIONS
 ========================= */
@@ -933,7 +997,6 @@ button:active {
 }
 
 
-
 /* =========================
    MOBILE
 ========================= */
@@ -963,7 +1026,8 @@ button:active {
 
     .main-menu,
     .character-menu,
-    .how-menu {
+    .how-menu,
+    .patch-notes-menu {
         min-height: 100vh;
         min-height: 100dvh;
     }
@@ -978,36 +1042,37 @@ button:active {
 
 
     .menu-logo {
-        width: 300px;
+        width: 280px;
 
         max-width: 80%;
     }
 
 
     .menu-bird {
-        width: 60px;
+        width: 55px;
 
-        height: 60px;
+        height: 55px;
 
         margin:
-            14px 0;
+            12px 0;
     }
 
 
     .menu-buttons {
-        width: min(
-            280px,
-            82vw
-        );
+        width:
+            min(
+                280px,
+                82vw
+            );
 
-        gap: 12px;
+        gap: 10px;
     }
 
 
     button {
-        min-height: 52px;
+        min-height: 50px;
 
-        font-size: 15px;
+        font-size: 14px;
     }
 
 
@@ -1020,17 +1085,9 @@ button:active {
     }
 
 
-    .left-building {
-        left: -30px;
-    }
-
-
-    .right-building {
-        right: -30px;
-    }
-
-
-    .character-menu {
+    .character-menu,
+    .how-menu,
+    .patch-notes-menu {
         padding:
             max(25px, env(safe-area-inset-top))
             14px
@@ -1038,18 +1095,15 @@ button:active {
     }
 
 
-    .character-box {
+    .character-box,
+    .how-box,
+    .patch-notes-box {
         width: 100%;
 
+        max-width: 100%;
+
         padding:
-            25px 15px 35px;
-    }
-
-
-    .character-box h2 {
-        font-size: 21px;
-
-        letter-spacing: 2px;
+            25px 15px;
     }
 
 
@@ -1078,40 +1132,15 @@ button:active {
     }
 
 
-    .locked-message {
-        bottom: -34px;
-
-        font-size: 8px;
-    }
-
-
-    .how-menu {
-        padding:
-            max(25px, env(safe-area-inset-top))
-            15px
-            max(30px, env(safe-area-inset-bottom));
-    }
-
-
-    .how-box {
-        width: 100%;
-
-        max-width: 100%;
-
-        padding:
-            28px 20px;
-    }
-
-
-    .how-box h2 {
+    .patch-notes-box h2 {
         font-size: 22px;
+
+        letter-spacing: 2px;
     }
 
 
-    .how-box p {
-        font-size: 13px;
-
-        line-height: 1.5;
+    .patch-list p {
+        font-size: 12px;
     }
 
 
@@ -1162,21 +1191,6 @@ button:active {
 
     .game-over-menu {
         position: fixed;
-
-        padding:
-            max(20px, env(safe-area-inset-top))
-            15px
-            max(20px, env(safe-area-inset-bottom));
-    }
-
-
-    .game-over-box {
-        width: 100%;
-
-        max-width: 430px;
-
-        padding:
-            30px 20px;
     }
 
 
@@ -1187,122 +1201,6 @@ button:active {
 
     .game-over-buttons button {
         width: 100%;
-    }
-
-}
-
-
-
-/* =========================
-   SHORT PHONE SCREENS
-========================= */
-
-@media
-(max-width: 700px)
-and
-(max-height: 650px) {
-
-    .menu-logo {
-        width: 230px;
-    }
-
-
-    .menu-bird {
-        width: 45px;
-
-        height: 45px;
-
-        margin:
-            8px 0;
-    }
-
-
-    .menu-buttons {
-        gap: 8px;
-    }
-
-
-    .menu-buttons button {
-        min-height: 44px;
-
-        padding:
-            10px 15px;
-    }
-
-
-    .menu-highscore {
-        margin-top: 12px;
-    }
-
-
-    .tiny-text {
-        margin:
-            4px 0;
-    }
-
-}
-
-
-
-/* =========================
-   MOBILE LANDSCAPE
-========================= */
-
-@media
-(max-height: 500px)
-and
-(orientation: landscape) {
-
-    .game-shell {
-        width: 100vw;
-
-        max-width: 100vw;
-
-        height: 100dvh;
-
-        min-height: 100dvh;
-    }
-
-
-    .game-screen {
-        height: 100dvh;
-
-        min-height: 100dvh;
-
-        padding:
-            4px 12px;
-    }
-
-
-    .game-topbar {
-        margin:
-            0 0 3px;
-
-        font-size: 11px;
-    }
-
-
-    .game-topbar p {
-        margin:
-            2px 0;
-    }
-
-
-    #gameCanvas {
-        width: auto;
-
-        max-width: 100%;
-
-        height: calc(
-            100dvh - 60px
-        );
-
-        margin: auto;
-    }
-
-
-    .controls {
-        display: none;
     }
 
 }
